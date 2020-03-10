@@ -1,0 +1,166 @@
+<html class="no-js" lang="en-us">
+  <head>
+    <meta charset="utf-8"><!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge'><![endif]-->
+    <title>I Joined DSA</title>
+    <meta name="description" content="Generate your own Join DSA graphic!">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="supported-color-schemes" content="light dark">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <meta name="theme-color" content="#fafafa">
+    <link rel="stylesheet" href="https://use.typekit.net/hqc5idp.css">
+  </head>
+  <body>
+    <header style="background-color:#ec1f2b;color:white">
+      <section>
+        <article class="textual">
+          <h1>I Joined DSA</h1>
+          <p>Create your own #JoinDSA graphic to share over Instagram, Twitter, Facebook, emails, and so forth!</p>
+        </article>
+      </section>
+    </header><!--[if lt IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please
+      <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+    </p><![endif]-->
+    <main class="requires-js" style="background-color:white;color:black">
+      <section>
+        <article class="textual">
+          <div class="group">
+            <div class="ksbox half">
+              <form>
+                <div>
+                  <label>Name
+                    <input id="name-input" type="text" maxlength="30">
+                  </label>
+                </div>
+                <div>
+                  <label>Title, Location
+                    <input id="job-input" type="text" maxlength="80">
+                  </label>
+                </div>
+                <div>
+                  <label>Why did you join DSA (1 short paragraph)
+                    <textarea id="quotation" rows="6"></textarea>
+                  </label>
+                </div>
+                <div>
+                  <label><img id="avatarImage" style="display:none">Photo of you
+                    <input id="uploadAvatar" type="file" value="upload image" onchange="readURL(this);">
+                  </label>
+                </div>
+                <div class="background-colors" style="padding-top:1em;">
+                  <label>
+                    <input type="radio" name="color" value="hsl(202, 85%, 31%)" checked/>
+                  </label>
+                </div>
+                <div class="background-images">
+                  <label>
+                    <input type="radio" name="background" value="backgroundEastBay.png"/>
+                    <img class="background-thumbnail" src="img/backgroundEastBay.png">
+                  </label>
+                  <label>
+                    <input type="radio" name="background" value="backgroundHeidi5.png"/>
+                    <img class="background-thumbnail" src="img/backgroundHeidi5.png">
+                  </label>
+                  <label>
+                    <input type="radio" name="background" value="backgroundHeidiFlag.png"/>
+                    <img class="background-thumbnail" src="img/backgroundHeidiFlag.png">
+                  </label>
+                </div>
+                <div>
+                  <input id="generate" type="submit" value="Generate image">
+                </div>
+              </form>
+            </div>
+            <div class="ksbox half" id="canvasContainer">
+              <canvas id="canvas" width="1600" height="1600" style="max-width:100%; display:none"></canvas><img id="canvasImg" src="img/DebsExample.png">
+              <div id="saveContainer" style="display:none">
+                <p>
+                  Image has been generated! Feel free to adjust it to your liking.
+
+                </p>
+                <p style="font-size:80%"><b>Known issues:</b> If the fonts aren't quite right, try re-generating your image. And certain photos may be rotated incorrectly depending on the orientation of your phone's camera. If you are on an <b>iPhone</b> <a href="https://www.businessinsider.com/where-do-downloads-go-on-iphone">read this</a> to access your image. For now, do not use <b>Firefox</b> browser.</p>
+                <p>
+                  Please post this on twitter and tag<a href="https://twitter.com/DemSocialists">@DemSocialists</a>! And be sure to include the hashtag <b>#TrySocialism</b> and <b>#JoinDSA</b>.
+
+                </p>
+                <p><a class="button" id="download" href="#">Download Image</a></p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+    <footer style="background-color:#ec1f2b;color:white">
+      <p>
+        © 2020 Democratic Socialists of America
+        <br/>
+        Paid for by Democratic Socialists of America (<a href="https://www.dsausa.org">www.dsausa.org</a>) and not authorized by any candidate or candidate’s committee.
+        <br/>
+        This website and its code was derived from <a href="http://www.iendorsebernie.com">www.IEndorseBernie.com</a>
+      </p>
+    </footer>
+  </body>
+  <div class="js-warning">This page requires JavaScript! </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\\/script>')</script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.documentElement.className = document.documentElement.className.replace("no-js","js");
+
+  </script>
+  <script>
+    $("a#download").on('click', function() {
+    	$(this).attr('download', 'I_Endorse_Bernie.png');
+    	$(this).attr('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+    });
+
+    $("#generate").on('click', function() {
+
+    	// Set globals
+
+    	name = $('#name-input').val().trim();
+    	job = $('#job-input').val().trim();
+    	quotation = $('#quotation').val().trim();
+
+    	avatarImageSrc = $("#avatarImage").attr('src');
+
+    	bgcolor = "#ec1f2b";
+
+    	background = $("input[name=background]:checked").val();//"/background2.jpg";
+
+    	// if (name.length < 0 || job.length < 0 || quotation.length < 0) {
+    	// 	alert("Please fill in all of the blanks with enough information!");
+    	// }
+    	// else if (avatarImageSrc === undefined) {
+    	// 	alert("You need to upload your image!");
+    	// }
+    	// else {
+    	// 	startGeneratingImage();
+    	// }
+      startGeneratingImage();
+
+    	return false;
+    });
+
+  </script>
+  <script>
+    function readURL(input)
+    {
+    	$("#avatarImage").css("display", "block");
+
+    	if (input.files && input.files[0]) {
+    		var reader = new FileReader();
+
+    		reader.onload = function (e) {
+    			$("#avatarImage").attr('src', e.target.result);
+    		}
+
+    		reader.readAsDataURL(input.files[0]);
+    	}
+    }
+
+  </script>
+</html>
