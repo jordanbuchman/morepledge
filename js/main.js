@@ -385,8 +385,8 @@ function imagesAreNowLoaded(){
 	}
 
 
-	var GENERATED_TEXT = "Democratic Socialists of America";
-	var GENERATED_HASHTAG = " #TrySocialism #JoinDSA"
+	// var GENERATED_TEXT = "Democratic Socialists of America";
+	// var GENERATED_HASHTAG = " #TrySocialism #JoinDSA"
 	// var IM_VOLUNTEERING = endorseeName == "Bernie" ? "I’m volunteering for Bernie by:" :  "I’m volunteering for Bernie & " + endorseeName + " by:";
 	// const VOL_URL = "berniesanders.com/volunteer";
 
@@ -418,18 +418,18 @@ function imagesAreNowLoaded(){
 
 	// ----------------------------------------------------- BOTTOM STUFF
 
-	ctx.font = "500 " + String(20 * h/1000) + "px freight-sans-pro, monospace";
-	ctx.fillStyle = 'white';
-	ctx.fillText(GENERATED_TEXT, w*0.051, h*0.96, w*0.9);
-
-	var thatWidth = ctx.measureText(GENERATED_TEXT + "  ").width;
-	ctx.fillStyle = 'RGBA(255,255,255,0.6';
-	ctx.font = "700 " + String(20 * h/1000) + "px freight-sans-pro, monospace";
-	ctx.fillText(GENERATED_HASHTAG, w*0.051 + thatWidth, h*0.96, w*0.9);
-
-	ctx.font = "500 " + String(15 * h/1000) + "px freight-sans-pro, monospace";
-	ctx.fillStyle = 'RGBA(255,255,255,0.4';
-	ctx.fillText("Continuing the Political Revolution", w*0.051, h*0.98, w*0.9);
+	// ctx.font = "500 " + String(20 * h/1000) + "px freight-sans-pro, monospace";
+	// ctx.fillStyle = 'white';
+	// ctx.fillText(GENERATED_TEXT, w*0.051, h*0.96, w*0.9);
+  //
+	// var thatWidth = ctx.measureText(GENERATED_TEXT + "  ").width;
+	// ctx.fillStyle = 'RGBA(255,255,255,0.6';
+	// ctx.font = "700 " + String(20 * h/1000) + "px freight-sans-pro, monospace";
+	// ctx.fillText(GENERATED_HASHTAG, w*0.051 + thatWidth, h*0.96, w*0.9);
+  //
+	// ctx.font = "500 " + String(15 * h/1000) + "px freight-sans-pro, monospace";
+	// ctx.fillStyle = 'RGBA(255,255,255,0.4';
+	// ctx.fillText("Continuing the Political Revolution", w*0.051, h*0.98, w*0.9);
 
 
 	var logoWidth = w*0.10;
