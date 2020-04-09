@@ -107,7 +107,10 @@ function imagesAreNowLoaded(){
 
 	// ----------------------------------------------------- Background Image - width is twice height
 
-		ctx.globalAlpha = 0.4;
+		ctx.globalAlpha = 0.7;
+    // if background.includes("Join") {
+    //   ctx.globalAlpha = 1.0;
+    // }
 		ctx.drawImage(imgs[BACKGROUND], 0, 0, w, h/2);
 		ctx.globalAlpha = 1.0;
 
