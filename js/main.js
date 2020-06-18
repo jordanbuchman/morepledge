@@ -51,10 +51,10 @@ async function startGeneratingImage() {
 	imgs=[];
 
 	imageURLs=[];
-	imageURLs.push(avatarImageSrc ? avatarImageSrc : "/img/logo.png");
+	imageURLs.push(avatarImageSrc ? avatarImageSrc : "img/logo.png");
 
-	imageURLs.push('/img/' + background);
-	imageURLs.push("/img/logo.png");
+	imageURLs.push('img/' + background);
+	imageURLs.push("img/logo.png");
 
 	imagesOK=0;
 	startLoadingAllImages(imagesAreNowLoaded);
