@@ -34,7 +34,8 @@ const BERNIE = 2
 const STATE = 3
 const CANDIDATE = 4
 
-const dsared = '#ec1f2b';
+// red = #ec1f2b
+const dsared = '#1a1915';
 
 // https://stackoverflow.com/a/53636623/25560
 const prepareFontLoad = (fontList) => Promise.all(fontList.map(font => document.fonts.load(font)));
@@ -50,10 +51,10 @@ async function startGeneratingImage() {
 	imgs=[];
 
 	imageURLs=[];
-	imageURLs.push(avatarImageSrc ? avatarImageSrc : "/img/logo-dsa-bw-transparent.png");
+	imageURLs.push(avatarImageSrc ? avatarImageSrc : "/img/logo.png");
 
 	imageURLs.push('/img/' + background);
-	imageURLs.push("/img/logo-dsa-bw-transparent.png");
+	imageURLs.push("/img/logo.png");
 
 	imagesOK=0;
 	startLoadingAllImages(imagesAreNowLoaded);
@@ -194,7 +195,7 @@ function imagesAreNowLoaded(){
 	// ----------------------------------------------------- Name + Endorses ______
 
 	var endorses = "joined ";//(plural ? "endorse" : "endorses") + " ";
-	var endorseeName = "DSA";//endorseeInfo.name;
+	var endorseeName = "AfroSoc";//endorseeInfo.name;
 
 	var fontSize = 112 * w/1000;
 	ctx.font = "700 " + String(fontSize) + "px Jubilat,monospace";
@@ -257,7 +258,7 @@ function imagesAreNowLoaded(){
 	ctx.fillText(endorseeName, textX, y, textWidth2);
 
 
-	var andBernieText = "Join today at dsausa.org/join";
+	var andBernieText = "Join today at tinyurl.com/JoinAfroSoc";
 
 	fontSize = 80 * h/1000;
 	ctx.font = "700 italic " + String(fontSize) + "px Jubilat,monospace";
@@ -437,6 +438,11 @@ function imagesAreNowLoaded(){
 
 	var logoWidth = w*0.10;
 	ctx.drawImage(imgs[BERNIE], w*0.88, h*0.88, logoWidth, logoWidth);
+
+	canvas.toBlob(function(blob) {
+        $("a#download").attr('href', URL.createObjectURL(blob));
+        $("a#download").attr('download', "I_Joined_AFROSOC.png");
+	});
 
 	var saveContainer = document.getElementById('saveContainer');
 	saveContainer.style.display = 'block';		// reveal all!
