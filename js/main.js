@@ -356,8 +356,8 @@ function imagesAreNowLoaded(){
 
 	// ----------------------------------------------------- Paragraph Text
 	var setting = {
-			maxSpaceSize : 6,
-			minSpaceSize : 0.5,
+			maxSpaceSize : 1,
+			minSpaceSize : 1,
 			lineSpacing : 1.07,
 			compact : false
 	}
