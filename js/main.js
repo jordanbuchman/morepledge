@@ -35,7 +35,7 @@ const STATE = 3
 const CANDIDATE = 4
 
 // red = #ec1f2b
-const dsared = '#1a1915';
+const dsared = '#EE3342';
 
 // https://stackoverflow.com/a/53636623/25560
 const prepareFontLoad = (fontList) => Promise.all(fontList.map(font => document.fonts.load(font)));
@@ -44,7 +44,7 @@ const prepareFontLoad = (fontList) => Promise.all(fontList.map(font => document.
 
 async function startGeneratingImage() {
 
-	const fontList = ['700 60px Jubilat', '700 italic 60px Jubilat', '700 60px freight-sans-pro', '500 60px freight-sans-pro', ]
+	const fontList = ['700 60px Montserrat', '700 italic 60px Montserrat', '700 60px freight-sans-pro', '500 60px freight-sans-pro', ]
 	await prepareFontLoad(fontList);
 
 	// the loaded images will be placed in imgs[]
@@ -195,17 +195,17 @@ function imagesAreNowLoaded(){
 	// ----------------------------------------------------- Name + Endorses ______
 
 	var endorses = "joined ";//(plural ? "endorse" : "endorses") + " ";
-	var endorseeName = "AfroSoc";//endorseeInfo.name;
+	var endorseeName = "MORE";//endorseeInfo.name;
 
 	var fontSize = 112 * w/1000;
-	ctx.font = "700 " + String(fontSize) + "px Jubilat,monospace";
+	ctx.font = "700 " + String(fontSize) + "px Montserrat,monospace";
 
 	var textWidth1 = ctx.measureText(name).width;
 
 
-	ctx.font = "700 italic " + String(fontSize) + "px Jubilat,monospace";
+	ctx.font = "700 italic " + String(fontSize) + "px Montserrat,monospace";
 	var textWidth2a = ctx.measureText(endorses).width;
-	ctx.font = "700 " + String(fontSize) + "px Jubilat,monospace";
+	ctx.font = "700 " + String(fontSize) + "px Montserrat,monospace";
 	var textWidth2 = textWidth2a + ctx.measureText(endorseeName).width;
 
 
@@ -214,13 +214,13 @@ function imagesAreNowLoaded(){
 
 	if (textWidth1 > w * 0.9 || textWidth2 > w*0.9) {
 		fontSize *= w*0.9/Math.max(textWidth1, textWidth2);
-		ctx.font = "700 " + String(fontSize) + "px Jubilat,monospace";
+		ctx.font = "700 " + String(fontSize) + "px Montserrat,monospace";
 
 		// Recalc widths based on new size
 		textWidth1 = ctx.measureText(name).width;
-		ctx.font = "700 italic " + String(fontSize) + "px Jubilat,monospace";
+		ctx.font = "700 italic " + String(fontSize) + "px Montserrat,monospace";
 		textWidth2a = ctx.measureText(endorses).width;
-		ctx.font = "700 " + String(fontSize) + "px Jubilat,monospace";
+		ctx.font = "700 " + String(fontSize) + "px Montserrat,monospace";
 		textWidth2 = textWidth2a + ctx.measureText(endorseeName).width;
 	}
 
@@ -244,13 +244,13 @@ function imagesAreNowLoaded(){
 	ctx.fillStyle = dsared;
 	ctx.fillRect(textX, y-ascent-extra, textWidth2, ascent+2*extra);  // background of entire width - endorses + name
 
-	ctx.font = "700 italic " + String(fontSize) + "px Jubilat,monospace";
+	ctx.font = "700 italic " + String(fontSize) + "px Montserrat,monospace";
 
 	ctx.fillStyle = 'white';
 	ctx.fillText(endorses, textX, y, textWidth2a);
 
 	textX += textWidth2a;
-	ctx.font = "700 " + String(fontSize) + "px Jubilat,monospace";
+	ctx.font = "700 " + String(fontSize) + "px Montserrat,monospace";
 
 	textWidth2 = ctx.measureText(endorseeName).width
 
@@ -258,15 +258,15 @@ function imagesAreNowLoaded(){
 	ctx.fillText(endorseeName, textX, y, textWidth2);
 
 
-	var andBernieText = "Join today at tinyurl.com/JoinAfroSoc";
+	var andBernieText = "Join today at bit.ly/Join-MORE";
 
 	fontSize = 80 * h/1000;
-	ctx.font = "700 italic " + String(fontSize) + "px Jubilat,monospace";
+	ctx.font = "700 italic " + String(fontSize) + "px Montserrat,monospace";
 	var textWidth4 = ctx.measureText(andBernieText).width
 
 	if (textWidth4 + textX > w * 0.8) {
 		fontSize *= w*0.8/textWidth4;
-		ctx.font = "700 italic " + String(fontSize) + "px Jubilat,monospace";
+		ctx.font = "700 italic " + String(fontSize) + "px Montserrat,monospace";
 
 		// Recalc width based on new size
 		textWidth4 = ctx.measureText(andBernieText).width;
@@ -349,15 +349,15 @@ function imagesAreNowLoaded(){
 
 	// ----------------------------------------------------- Quote Mark
 
-	ctx.font = "700 " + String(150 * h/1000) + "px Jubilat,monospace";
+	ctx.font = "700 " + String(150 * h/1000) + "px Montserrat,monospace";
 	ctx.fillStyle = 'rgba(255,255,255,0.5)';
 	ctx.fillText("“", w*0.031, h*0.77, w*0.9);
 
 
 	// ----------------------------------------------------- Paragraph Text
 	var setting = {
-			maxSpaceSize : 1,
-			minSpaceSize : 1,
+			maxSpaceSize : 6,
+			minSpaceSize : 0.5,
 			lineSpacing : 1.07,
 			compact : false
 	}
@@ -373,16 +373,16 @@ function imagesAreNowLoaded(){
 	var volSize;
 
 	var volunteerString = "";
-
+	console.log("doing paragraph!")
 	for(size = 50 ; size > 15 ; size -= 1) {
-
+		console.log(size);
 		y = origY;
 		ctx.font = "700 " + String(size * h/1000) + "px freight-sans-pro, monospace";
 
 		// Draw paragraph
 		var line = ctx.fillParaText(quotation+endquote, left, y, wid, setting);  // settings is remembered
 
-    y = line.nextLine;
+    	y = line.nextLine;
 		if (y < h * 0.90) {
 			break;  // it fits, so really draw now.
 		}
@@ -441,7 +441,7 @@ function imagesAreNowLoaded(){
 
 	canvas.toBlob(function(blob) {
         $("a#download").attr('href', URL.createObjectURL(blob));
-        $("a#download").attr('download', "I_Joined_AFROSOC.png");
+        $("a#download").attr('download', "I_Joined_MORE.png");
 	});
 
 	var saveContainer = document.getElementById('saveContainer');
